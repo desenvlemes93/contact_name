@@ -19,12 +19,21 @@ class ContactListCubit extends Cubit<ContactListCubitState> {
       final contactsCubit = await _contactsRepository.findAll();
       await Future.delayed(const Duration(seconds: 4));
 
-      print(contactsCubit);
       emit(ContactListCubitState.data(contacts: contactsCubit));
     } catch (e, s) {
       log('Erro ao  listar contacto ', error: e, stackTrace: s);
       emit(const ContactListCubitState.error(
           message: 'Erro ao listar Contatos'));
     }
+  }
+
+  Future<void> delete({required ContactModel model}) async {
+    emit(const ContactListCubitState.loading());
+    final teste = ContactModel(
+      id: model.id,
+      name: model.name,
+      email: model.email,
+    );
+    _contactsRepository.delete(teste);
   }
 }

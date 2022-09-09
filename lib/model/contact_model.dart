@@ -1,10 +1,10 @@
-import 'dart:convert';
+import 'package:equatable/equatable.dart';
 
 class ContactModel {
-  final int? id;
+  final int id;
   final String name;
   final String email;
-  ContactModel({
+  const ContactModel({
     required this.id,
     required this.name,
     required this.email,
@@ -20,30 +20,24 @@ class ContactModel {
 
   factory ContactModel.fromMap(Map<String, dynamic> map) {
     return ContactModel(
-      id: map['id'] ?? 0,
+      id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory ContactModel.fromJson(String source) =>
-      ContactModel.fromMap(json.decode(source));
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is ContactModel &&
-        other.id == id &&
-        other.name == name &&
-        other.email == email;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
-
   @override
   String toString() => 'ContactModel(id: $id, name: $name, email: $email)';
+
+  ContactModel copyWith({
+    int? id,
+    String? name,
+    String? email,
+  }) {
+    return ContactModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+    );
+  }
 }

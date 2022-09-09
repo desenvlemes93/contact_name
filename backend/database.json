@@ -1,14 +1,1 @@
-{
-  "contacts": [
-    {
-      "id": 1,
-      "name": "ricardo",
-      "email": "teste@ricardo.com"
-    },
-    {
-      "id": 3,
-      "name": "Julia",
-      "email": "teste@gm"
-    }
-  ]
-}
+{"contacts":[{"id":1,"name":"flutter android","email":"teste@gmail.com"},{"id":2,"name":"teste bloc alteradpo pelocub","email":"teste@gmail"}]}

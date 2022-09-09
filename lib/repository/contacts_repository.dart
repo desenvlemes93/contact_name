@@ -2,7 +2,7 @@ import 'package:contact_name/model/contact_model.dart';
 import 'package:dio/dio.dart';
 
 class ContactsRepository {
-  final String urlName = 'http://192.168.0.103:3001/contacts';
+  final String urlName = 'http://10.173.18.169:3001/contacts';
   Future<List<ContactModel>> findAll() async {
     final response = await Dio().get('http://192.168.0.103:3001/contacts');
 
@@ -22,7 +22,7 @@ class ContactsRepository {
       );
 
   Future<void> delete(ContactModel model) =>
-      Dio().delete('$urlName/${model.id}');
+      Dio().delete('http://192.168.0.103:3001/contacts/${model.id}');
 
   Future<int> findId() async {
     final response = await Dio().get('http://192.168.0.103:3001/contacts');

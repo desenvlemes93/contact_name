@@ -23,7 +23,7 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
       _ContactListEventFindAll event, Emitter<ContactListState> emit) async {
     try {
       emit(ContactListState.loading());
-      await _repository.findId();
+      //await _repository.findId();
 
       final contacts = await _repository.findAll();
 
@@ -40,10 +40,10 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
     }
   }
 
-  Future<FutureOr<void>> _delete(
+  FutureOr<void> _delete(
       _ContactListEventDeleteId event, Emitter<ContactListState> emit) async {
     final contact = ContactModel(
-      id: event.id,
+      id: event.id!,
       name: event.name,
       email: event.email,
     );

@@ -93,12 +93,10 @@ class _ContactRegisterCubitPageState extends State<ContactRegisterCubitPage> {
                             _formKey.currentState?.validate() ?? false;
 
                         if (_formValid) {
-                          context.read<ContactRegisterCubit>()
-                            ..saveRegister(
-                              id: 0,
-                              nome: _nomeEC.text,
-                              email: _emailEC.text,
-                            );
+                          context.read<ContactRegisterCubit>().saveRegister(
+                                nome: _nomeEC.text,
+                                email: _emailEC.text,
+                              );
                         }
                       },
                       icon: const Icon(Icons.save),
