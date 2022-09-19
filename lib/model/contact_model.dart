@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ContactModel {
-  final int id;
+  final int? id;
   final String name;
   final String email;
   const ContactModel({
@@ -20,7 +20,7 @@ class ContactModel {
 
   factory ContactModel.fromMap(Map<String, dynamic> map) {
     return ContactModel(
-      id: map['id']?.toInt() ?? 0,
+      id: map['id'].toInt() ?? 0,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
     );

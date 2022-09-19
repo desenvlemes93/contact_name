@@ -12,7 +12,7 @@ class ContactsRepository {
   }
 
   Future<void> create(ContactModel model) => Dio().post(
-        'http://192.168.0.103:3001/contacts/${model.id}}',
+        'http://192.168.0.103:3001/contacts/${model.id!}}',
         data: model.toMap(),
       );
 
@@ -24,7 +24,7 @@ class ContactsRepository {
   Future<void> delete(ContactModel model) =>
       Dio().delete('http://192.168.0.103:3001/contacts/${model.id}');
 
-  Future<int> findId() async {
+  Future<int>? findId() async {
     final response = await Dio().get('http://192.168.0.103:3001/contacts');
 
     return response.data.last['id'];

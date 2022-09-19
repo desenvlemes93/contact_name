@@ -13,17 +13,20 @@ class ContactRegisterCubit extends Cubit<ContactRegisterCubitState> {
         super(ContactRegisterCubitState.initial());
 
   Future<void> saveRegister(
-      {required String nome, required String email}) async {
+      {int? id, required String nome, required String email}) async {
     final numeracao = await _repository.findId();
     emit(ContactRegisterCubitState.loading());
-    final contacts = ContactModel(
-      id: numeracao + 1,
-      name: nome,
-      email: email,
-    );
-    await _repository.create(contacts);
-    emit(
-      ContactRegisterCubitState.success(),
-    );
+    if (numeracao != null) {
+      final contacts = ContactModel(
+        id: numeracao + 1,
+        name: nome,
+        email: email,
+      );
+
+      await _repository.create(contacts);
+      emit(
+        ContactRegisterCubitState.success(),
+      );
+    }
   }
 }

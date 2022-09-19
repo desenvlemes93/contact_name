@@ -94,6 +94,7 @@ class _ContactRegisterCubitPageState extends State<ContactRegisterCubitPage> {
 
                         if (_formValid) {
                           context.read<ContactRegisterCubit>().saveRegister(
+                            id: 2,
                                 nome: _nomeEC.text,
                                 email: _emailEC.text,
                               );

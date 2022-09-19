@@ -23,14 +23,14 @@ class ContactRegisterBloc
   Future<FutureOr<void>> _save(
       event, Emitter<ContactRegisterState> emit) async {
     try {
-      final incrementNumero = await _contactsRepository.findId();
+      // final incrementNumero = await _contactsRepository.findId();
       final contactModel = ContactModel(
-        id: incrementNumero + 1,
+        id: 1,
         name: event.name,
         email: event.email,
       );
       emit(const ContactRegisterState.loading());
-      await Future.delayed(const Duration(seconds: 3));
+      // await Future.delayed(const Duration(seconds: 3));
       await _contactsRepository.create(contactModel);
       emit(const ContactRegisterState.sucess());
     } catch (e, s) {

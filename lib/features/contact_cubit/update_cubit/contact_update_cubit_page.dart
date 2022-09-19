@@ -89,7 +89,7 @@ class _ContactUpdateCubitPageState extends State<ContactUpdateCubitPage> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       context.read<ContactUpdateCubit>().updateCadastro(
-                            id: widget.model.id,
+                            id: widget.model.id!,
                             name: _nomeEC.text,
                             email: _emailEC.text,
                           );
